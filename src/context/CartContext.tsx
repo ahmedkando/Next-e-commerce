@@ -1,0 +1,47 @@
+import React, { createContext, useState, ReactNode, useContext, useEffect } from "react";
+import { getUserCart } from "@/services/cart.service";
+import { ICartResponse } from "@/interfaces/cart.interface";
+
+
+interface ICartContext{
+    cartDetails:ICartResponse | null;
+    setCartDetails: React.Dispatch<React.SetStateAction<ICartResponse|null>>;
+    getCartDetails:() => Promise<void>;
+
+}
+
+
+
+export const CartContext = createContext<ICartContext|null>(null);
+
+export const CartContextProvider = ({ children }: { children: ReactNode }) => {
+
+  const [cartDetails, setCartDetails] = useState<ICartResponse|null>(null);
+
+async function getCartDetails() {
+  
+     const {data} :{data:ICartResponse} = await getUserCart();
+
+    setCartDetails(data);
+}
+useEffect(()=>{
+
+getCartDetails();
+  },[]);
+
+
+  return (
+    <CartContext.Provider value={{ cartDetails,setCartDetails , getCartDetails}}>
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+
+  export function useCart(){
+    const context = useContext(CartContext);
+    if(!context){
+        throw new Error ("useCart must be used within CaerContextProvider");
+    }
+    return context;
+  }
