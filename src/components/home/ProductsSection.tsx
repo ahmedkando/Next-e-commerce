@@ -6,9 +6,14 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import Productitem from '../products/Productitem';
 
-export default async function ProductsSection() {
-    const {data:products} :{data:IProduct[]}= await getProducts(8,);
-    console.log(products);
+export default async function ProductsSection({
+  params,
+}: {
+  params?: { categoryId?: string };
+}) {
+  const categoryId = params?.categoryId ?? "";
+
+  const { data: products }: { data: IProduct[] } = await getProducts(8, categoryId);
 
     return (    
         <section className='py-10'>
