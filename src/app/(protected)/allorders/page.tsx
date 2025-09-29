@@ -1,8 +1,11 @@
-// app/orders/page.tsx
+
 import { getUseOrders } from "@/services/order.service";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingBag } from "lucide-react";
+
+export const revalidate = 0;
+
 
 export default async function OrderPage() {
   const { data, success, message } = await getUseOrders();

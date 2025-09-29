@@ -1,38 +1,27 @@
-//localhost:3000/api/brands
 
+import { NextResponse } from "next/server";
 
-
-export function GET() {
-
-
-const data = [
-{
-    id : 1,
-     name: 'Brand A',
-     slug: 'brand-a',
-     image: 'https://example.com/brand-a.png'
+export async function GET() {
+  const data = [
+    {
+      id: 1,
+      name: "Brand A",
+      slug: "brand-a",
+      image: "https://example.com/brand-a.png",
     },
     {
-    id : 1,
-     name: 'Brand A',
-     slug: 'brand-a',
-     image: 'https://example.com/brand-a.png'
+      id: 2,
+      name: "Brand B",
+      slug: "brand-b",
+      image: "https://example.com/brand-b.png",
     },
     {
-    id : 1,
-     name: 'Brand A',
-     slug: 'brand-a',
-     image: 'https://example.com/brand-a.png'
+      id: 3,
+      name: "Brand C",
+      slug: "brand-c",
+      image: "https://example.com/brand-c.png",
     },
-    {
-    id : 1,
-     name: 'Brand A',
-     slug: 'brand-a',
-     image: 'https://example.com/brand-a.png'
-    },
+  ];
 
-];
-
-
-return  new Response(JSON.stringify(data));
+  return NextResponse.json(data);
 }

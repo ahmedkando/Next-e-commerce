@@ -3,7 +3,7 @@ import CategorySidebar from "@/components/home/CategorySidebar";
 import { Cat, Grid } from "lucide-react";
 import CategorySections from "@/components/home/CategorySections";
 import React, { Suspense } from "react";
-import ProductsSection from "@/components/home/ProductsSection";
+import ProductsSection  from "@/components/home/ProductsSection";
 import GridSkelaton from "@/components/shared/GridSkelaton";
 import Footer from "@/components/layout/Footer";
 import NewArrivalSection from "@/components/home/NewArrival"
